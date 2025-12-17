@@ -134,3 +134,4 @@ const MostrarPokemon = async () => {
 // Funcionamiento del boton
 cambioBtn.addEventListener("click", MostrarPokemon);
 
+// Texto para enviar el fix del commit anterior.
