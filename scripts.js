@@ -16,6 +16,7 @@ const type1 = document.getElementById("type1")
 const type2 = document.getElementById("type2")
 
 //Boton
+const cambioBtn = document.getElementById("change")
 
 //Sprites
 const sprite = document.getElementById("sprite")
@@ -67,31 +68,41 @@ class PokeAPI {
 }
 
 
-
-// Eleccion random
-
-const Aleatorio = Math.floor(Math.random() * (1000 - 0 + 1)) + 0;
-
-
 // Funcion Autoejecutable que manda los cambios, la hago 
 // asi para poder usar el async-await en espera de los datos de la API
-
-(async (numero) => {
+const MostrarPokemon = async () => {
     // Se busca de esta manera
+
+    // Eleccion random
+
+    const Aleatorio = Math.floor(Math.random() * (1000 - 0 + 1)) + 0;
+
     const Api = new PokeAPI()
 
-    const ObjetoPokemon = await Api.GetPokemonData(numero)
+    const ObjetoPokemon = await Api.GetPokemonData(Aleatorio)
 
     // Nombre
-    PokeName.innerHTML = `Nombre: <strong>${ObjetoPokemon.name}</strong>`
+    PokeName.innerHTML = `<p style="color: Yellow;">Nombre -> <strong style="color: white;">
+                        ${ObjetoPokemon.name}</strong></p>`
 
     // Estadisticas
-    hp.innerHTML = `hp: <strong>${ObjetoPokemon.stats.hp}</strong>`
-    attack.innerHTML = `Ataque: <strong>${ObjetoPokemon.stats.attack}</strong>`
-    defense.innerHTML = `Defensa: <strong>${ObjetoPokemon.stats.defense}</strong>`
-    special_attack.innerHTML = `Ataque especial: <strong>${ObjetoPokemon.stats["special-attack"]}</strong>`
-    special_defense.innerHTML = `Defensa especial: <strong>${ObjetoPokemon.stats["special-defense"]}</strong>`
-    speed.innerHTML = `Velocidad: <strong>${ObjetoPokemon.stats.speed}</strong>`
+    hp.innerHTML = `<p style="color: red;">hp -> <strong        style="color: white;">
+                    ${ObjetoPokemon.stats.hp}</strong></p>`
+
+    attack.innerHTML = `<p style="color: #DE7321;">Ataque -> <strong style="color: white;">
+                        ${ObjetoPokemon.stats.attack}</strong></p>`
+
+    defense.innerHTML = `<p style="color: #DE7321;">Defensa -> <strong style="color: white;">
+                        ${ObjetoPokemon.stats.defense}</strong></p>`
+
+    special_attack.innerHTML = `<p style="color: Yellow;">Ataque especial -> 
+                                <strong style="color: white;">${ObjetoPokemon.stats["special-attack"]}</strong></p> `
+
+    special_defense.innerHTML = `<p style="color: Yellow;">Defensa especial -> 
+                                <strong style="color: white;">${ObjetoPokemon.stats["special-defense"]}</strong></p>`
+
+    speed.innerHTML = `<p style="color: #35D7E9;">Velocidad -> <strong style="color: white;">
+                        ${ObjetoPokemon.stats.speed}</strong>`
 
     // Tipos
     const arrayType = await ObjetoPokemon.type
@@ -99,21 +110,21 @@ const Aleatorio = Math.floor(Math.random() * (1000 - 0 + 1)) + 0;
     const segundoTipo = arrayType[1]
 
     if(primerTipo){
-        type1.innerHTML = `<p>Tipo 1: <strong>${arrayType[0]}</strong></p>`
+        type1.innerHTML = `<p>Tipo 1 -> <strong>${arrayType[0]}</strong></p>`
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p>Tipo 2: <strong>${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p>Tipo 2 -> <strong>${arrayType[1]}</strong></p>`
     } else{
-        type2.innerHTML = `<p>Tipo 2: <strong>No tiene</strong></p>`
+        type2.innerHTML = `<p>Tipo 2 -> <strong>No tiene</strong></p>`
     }
 
     // Sprites
-    const stringSprite = ObjetoPokemon.sprite
+    const stringSprite = await ObjetoPokemon.sprite
     sprite.setAttribute("src", stringSprite)
+}
 
 
-})(Aleatorio);
-
-
+// Funcionamiento del boton
+cambioBtn.addEventListener("click", MostrarPokemon);
 

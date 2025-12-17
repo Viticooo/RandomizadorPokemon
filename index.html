@@ -4,45 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <title>PokeRandom | Randomizador Pokemon</title>
+    <link rel="icon" href="images/icon.webp">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fuentes de texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+        @theme {
+            /* Reemplaza la fuente 'sans' de todo el sitio */
+            --font-sans: "JetBrains Mono", sans-serif;
+        }
+    </style>
+
+
 </head>
-<body class="h-dvh flex flex-col justify-between items-center bg-slate-400 bg-[url('images/Yveltal.jpg')] bg-cover">
+<body class="h-dvh flex flex-col justify-between items-center bg-[url('images/fondo-azul.jpg')] bg-cover">
 
     <header class="text-xl text-white font-bold w-dvw text-center">
-        <p>Randomizador Pokemon</p>
+        <p></p>
     </header>
 
     <main>
-        <section>
+        <section class="
+        main-container 
+        flex flex-col 
+        bg-white/20 
+        backdrop-blur-md 
+        border border-white/30 
+        shadow-xl 
+        p-10 
+        rounded-2xl">
 
-            <section class="flex gap-4 bg-emerald-700 rounded-3xl h-65 w-140">
+            <section class="flex gap-4 h-65 w-160">
                 <div class="sprite-container p-4">
-                    <img src="" alt="Sprite Pokemon" srcset="" id="sprite" class="size-60">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="sprite" srcset="" id="sprite" class="size-60">
                 </div>
 
                 <div class="info-container p-4 flex flex-col justify-center">
                     <div class="name-container">
-                        <p id="name">Pokemon:</p>
+                        <p id="name" style="color: Yellow;">Nombre -> <strong style="color: white;">
+                        Bulbasaur</strong></p>
                     </div>
 
                     <div class="stats-container">
-                        <p id="hp">hp: 0</p>
-                        <p id="attack">Ataque: 0</p>
-                        <p id="defense">Defensa: 0</p>
-                        <p id="special-attack">Ataque especial: 0</p>
-                        <p id="special-defense">Defensa especial: 0</p>
-                        <p id="speed">Velocidad: 0</p>
-                        <p id="type1">Tipo 1: </p>
-                        <p id="type2">Tipo 2: </p>
+                        <p id="hp" style="color: red;">hp -> <strong style="color: white;">45</strong></p>
+                        <p id="attack" style="color: #DE7321;">Ataque -> <strong style="color: white;">49</strong></p>
+                        <p id="defense" style="color: #DE7321;">Defensa -> <strong style="color: white;">49</strong></p>
+                        <p id="special-attack" style="color: Yellow;">Ataque especial -> <strong style="color: white;">65</strong></p>
+                        <p id="special-defense" style="color: Yellow;">Defensa especial -> <strong style="color: white;">65</strong></p>
+                        <p id="speed" style="color: #35D7E9;">Velocidad -> <strong style="color: white;">45</strong></p>
+                    </div>
+                    <div class="types">
+                        <p id="type1">Tipo 1 -> grass</p>
+                        <p id="type2">Tipo 2 -> poison</p>
                     </div>
                 </div>
             </section>
 
+            <section class="button-container flex justify-center m-4">
+                <button id="change" class="bg-white/20 backdrop-blur-md border border-white/30 p-2 pl-6 pr-6 transition-all hover:bg-white/40 hover:scale-105 rounded-2xl">Cambio</button>
+            </section>
         </section>
     </main>
 
     <footer>
-        <p>© Todos los peluches reservados</p>
+        <p></p>
     </footer>
 
     <script src="scripts.js"></script>
