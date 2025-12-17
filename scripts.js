@@ -83,26 +83,26 @@ const MostrarPokemon = async () => {
     const ObjetoPokemon = await Api.GetPokemonData(Aleatorio)
 
     // Nombre
-    PokeName.innerHTML = `<p class="text-yellow-200 font-bold">Nombre -> <strong class="text-white font-bold">
+    PokeName.innerHTML = `<p class="text-yellow-200 font-bold">Nombre 🠚<strong class="text-white font-bold">
                         ${ObjetoPokemon.name}</strong></p>`
 
     // Estadisticas
-    hp.innerHTML = `<p class="text-rose-500  font-bold">hp -> <strong        class="text-white font-bold">
+    hp.innerHTML = `<p class="text-rose-500  font-bold">hp 🠚 <strong        class="text-white font-bold">
                     ${ObjetoPokemon.stats.hp}</strong></p>`
 
-    attack.innerHTML = `<p class="text-orange-400 font-bold">Ataque -> <strong class="text-white font-bold">
+    attack.innerHTML = `<p class="text-orange-400 font-bold">Ataque 🠚 <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.attack}</strong></p>`
 
-    defense.innerHTML = `<p class="text-amber-300 font-bold">Defensa -> <strong class="text-white font-bold">
+    defense.innerHTML = `<p class="text-amber-300 font-bold">Defensa 🠚 <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.defense}</strong></p>`
 
-    special_attack.innerHTML = `<p class="text-cyan-400 font-bold">Atq. especial -> 
+    special_attack.innerHTML = `<p class="text-cyan-400 font-bold">Atq. especial 🠚 
                                 <strong class="text-white font-bold">${ObjetoPokemon.stats["special-attack"]}</strong></p> `
 
-    special_defense.innerHTML = `<p class="text-indigo-800 font-bold">Def. especial -> 
+    special_defense.innerHTML = `<p class="text-indigo-800 font-bold">Def. especial 🠚 
                                 <strong class="text-white font-bold">${ObjetoPokemon.stats["special-defense"]}</strong></p>`
 
-    speed.innerHTML = `<p class="text-emerald-400 font-bold">Velocidad -> <strong class="text-white font-bold">
+    speed.innerHTML = `<p class="text-emerald-400 font-bold">Velocidad 🠚 <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.speed}</strong>`
 
     // Tipos
@@ -111,11 +111,11 @@ const MostrarPokemon = async () => {
     const segundoTipo = arrayType[1]
 
     if(primerTipo){
-        type1.innerHTML = `<p>Tipo 1 -> <strong class="text-white font-bold">${arrayType[0]}</strong></p>`
+        type1.innerHTML = `<p>Tipo 1 🠚 <strong class="text-white font-bold">${arrayType[0]}</strong></p>`
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p>Tipo 2 -> <strong class="text-white font-bold">${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p>Tipo 2 🠚 <strong class="text-white font-bold">${arrayType[1]}</strong></p>`
     } else{
         type2.textContent = ""
     }
