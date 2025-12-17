@@ -21,10 +21,11 @@ const cambioBtn = document.getElementById("change")
 //Sprites
 const sprite = document.getElementById("sprite")
 
+// Wiki
+const wiki = document.getElementById("wiki")
 
 
 // Funcion de buscar el pokemon en la API
-
 class PokeAPI {
 
     // Funcion para la busqueda de info general
@@ -75,33 +76,33 @@ const MostrarPokemon = async () => {
 
     // Eleccion random
 
-    const Aleatorio = Math.floor(Math.random() * (1000 - 0 + 1)) + 0;
+    const Aleatorio = Math.floor(Math.random() * (1025 - 0 + 1)) + 0;
 
     const Api = new PokeAPI()
 
     const ObjetoPokemon = await Api.GetPokemonData(Aleatorio)
 
     // Nombre
-    PokeName.innerHTML = `<p style="color: Yellow;">Nombre -> <strong style="color: white;">
+    PokeName.innerHTML = `<p class="text-yellow-200 font-bold">Nombre -> <strong class="text-white font-bold">
                         ${ObjetoPokemon.name}</strong></p>`
 
     // Estadisticas
-    hp.innerHTML = `<p style="color: red;">hp -> <strong        style="color: white;">
+    hp.innerHTML = `<p class="text-rose-500  font-bold">hp -> <strong        class="text-white font-bold">
                     ${ObjetoPokemon.stats.hp}</strong></p>`
 
-    attack.innerHTML = `<p style="color: #DE7321;">Ataque -> <strong style="color: white;">
+    attack.innerHTML = `<p class="text-orange-400 font-bold">Ataque -> <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.attack}</strong></p>`
 
-    defense.innerHTML = `<p style="color: #DE7321;">Defensa -> <strong style="color: white;">
+    defense.innerHTML = `<p class="text-amber-300 font-bold">Defensa -> <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.defense}</strong></p>`
 
-    special_attack.innerHTML = `<p style="color: Yellow;">Ataque especial -> 
-                                <strong style="color: white;">${ObjetoPokemon.stats["special-attack"]}</strong></p> `
+    special_attack.innerHTML = `<p class="text-cyan-400 font-bold">Atq. especial -> 
+                                <strong class="text-white font-bold">${ObjetoPokemon.stats["special-attack"]}</strong></p> `
 
-    special_defense.innerHTML = `<p style="color: Yellow;">Defensa especial -> 
-                                <strong style="color: white;">${ObjetoPokemon.stats["special-defense"]}</strong></p>`
+    special_defense.innerHTML = `<p class="text-indigo-800 font-bold">Def. especial -> 
+                                <strong class="text-white font-bold">${ObjetoPokemon.stats["special-defense"]}</strong></p>`
 
-    speed.innerHTML = `<p style="color: #35D7E9;">Velocidad -> <strong style="color: white;">
+    speed.innerHTML = `<p class="text-emerald-400 font-bold">Velocidad -> <strong class="text-white font-bold">
                         ${ObjetoPokemon.stats.speed}</strong>`
 
     // Tipos
@@ -110,18 +111,23 @@ const MostrarPokemon = async () => {
     const segundoTipo = arrayType[1]
 
     if(primerTipo){
-        type1.innerHTML = `<p>Tipo 1 -> <strong>${arrayType[0]}</strong></p>`
+        type1.innerHTML = `<p>Tipo 1 -> <strong class="text-white font-bold">${arrayType[0]}</strong></p>`
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p>Tipo 2 -> <strong>${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p>Tipo 2 -> <strong class="text-white font-bold">${arrayType[1]}</strong></p>`
     } else{
-        type2.innerHTML = `<p>Tipo 2 -> <strong>No tiene</strong></p>`
+        type2.textContent = ""
     }
 
     // Sprites
     const stringSprite = await ObjetoPokemon.sprite
     sprite.setAttribute("src", stringSprite)
+
+
+    // info PokeWiki
+    const referenciaWiki = `https://www.wikidex.net/wiki/${ObjetoPokemon.name}`
+    wiki.setAttribute("href", referenciaWiki)
 }
 
 
