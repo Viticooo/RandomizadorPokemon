@@ -1,7 +1,43 @@
-# RandomizadorPokemon
+## 🎲 Randomizador Pokémon
 
-### Randomizador Pokemon
+Aplicación web que permite obtener un Pokémon aleatorio utilizando la **PokeAPI**, mostrando sus estadísticas.  
+El proyecto fue creado principalmente para realizar **batallas random entre amigos**, pero puede usarse libremente para cualquier propósito.
 
-🎲https://viticooo.github.io/RandomizadorPokemon/
+🔗 **Demo:**  
+https://viticooo.github.io/RandomizadorPokemon/
 
-Este es un randomizador de pokemones, donde podremos ver las estadisticas especificas del pokemon en sus diferentes formas, el uso de esta pagina es libre, lo pueden utilizar para hacer la eleccion de pokemones en batallas random o simplemente para el uso que gusten. Principalmente esta pensado con el primer fin ya que es un proyecto para mis amigos :>
+---
+
+##  Funcionalidades
+-  Generación aleatoria de Pokémon
+-  Visualización de estadísticas base
+
+---
+
+##  Tecnologías utilizadas
+- **HTML5**
+- **JavaScript (Vanilla)**
+- **Tailwind CSS**
+- **PokeAPI**
+
+---
+
+##  Qué aprendí con este proyecto
+- Consumo de APIs REST usando `fetch`
+- Manejo de datos dinámicos desde una API externa
+- Manipulación del DOM con JavaScript
+- Renderizado dinámico de información
+- Uso de **Tailwind CSS** para crear interfaces rápidas y responsivas
+
+---
+
+##  Posibles mejoras futuras
+- Historial de Pokémon generados
+- Filtro por tipo o generación
+- Animaciones de carga
+- Guardar Pokémon favoritos (localStorage)
+
+---
+
+## 📄 Licencia
+Este proyecto es de uso libre.
