@@ -29,66 +29,86 @@
     }
 </style>
 
-<body class="h-dvh flex flex-col justify-between items-center bg-[url('images/fondo-azul.jpg')] bg-cover">
+<body class="min-h-dvh flex flex-col justify-center items-center bg-[url('images/fondo-azul.jpg')] bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden">
 
-    <header class="text-xl text-white font-bold w-dvw text-center">
-        <p></p>
-    </header>
+    <main class="flex flex-col lg:flex-row gap-6 items-center lg:items-stretch justify-center w-full max-w-7xl mx-auto pb-10 px-4">
 
-    <main>
-        <section class="
-        main-container 
-        flex flex-col 
-        bg-white/20 
-        backdrop-blur-md 
-        border border-white/30 
-        shadow-xl 
-        p-10
-        rounded-2xl">
+        <section class="options-container w-full lg:w-auto flex flex-col items-center bg-white/20 backdrop-blur-md border border-white/30 shadow-xl pt-4 pb-4 rounded-2xl text-white order-2 lg:order-1">
+            <div class="flex flex-col items-center justify-center p-6 lg:w-40">
+                <h1 class="font-bold text-lg">Historial</h1>
+                </div>
+        </section>
 
-            <section id="pokedata" class="flex gap-5 h-85 w-200 text-xl">
-                <div class="sprite-container p-4">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="sprite" srcset="" id="sprite" class="size-80">
+
+        <section class="main-container w-full lg:flex-1 flex flex-col bg-white/20 backdrop-blur-md border border-white/30 shadow-xl p-6 md:p-10 rounded-2xl order-1 lg:order-2">
+
+            <section id="pokedata" class="flex flex-col md:flex-row gap-8 items-center justify-center text-xl w-full h-full">
+                
+                <div class="sprite-container flex justify-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" 
+                         alt="sprite" 
+                         id="sprite" 
+                         class="w-60 h-60 md:w-80 md:h-80 object-contain drop-shadow-2xl">
                 </div>
 
-                <div class="info-container p-4 gap-4 flex flex-col justify-center">
-                    <div class="name-container">
-                        <p id="name" class="text-yellow-200 font-bold">Nombre 🠚 <strong class="text-white font-bold">
-                        Bulbasaur</strong></p>
+                <div class="info-container gap-2 flex flex-col justify-center w-full">
+                    <div class="name-container text-center md:text-left mb-4">
+                        <p id="name" class="text-yellow-200 font-bold text-2xl">
+                            Bulbasaur
+                        </p>
                     </div>
 
-                    <div class="stats-container">
-                        <p id="hp" class="text-rose-500  font-bold">hp 🠚 <strong class="text-white font-bold">45</strong></p>
-                        <p id="attack" class="text-orange-400 font-bold">Ataque 🠚 <strong class="text-white font-bold">49</strong></p>
-                        <p id="defense" class="text-amber-300 font-bold">Defensa 🠚 <strong class="text-white font-bold">49</strong></p>
-                        <p id="special-attack" class="text-cyan-400 font-bold">Ataque especial 🠚 <strong class="text-white font-bold">65</strong></p>
-                        <p id="special-defense" class="text-indigo-800 font-bold">Defensa especial 🠚 <strong class="text-white font-bold">65</strong></p>
-                        <p id="speed" class="text-emerald-400 font-bold">Velocidad 🠚 <strong class="text-white font-bold">45</strong></p>
+                    <div class="stats-container space-y-1 text-base md:text-lg bg-black/10 p-4 rounded-xl">
+                        <p id="hp" class="text-rose-500 font-bold flex justify-between">HP <strong class="text-white">45</strong></p>
+                        <p id="attack" class="text-orange-400 font-bold flex justify-between">Ataque <strong class="text-white">49</strong></p>
+                        <p id="defense" class="text-amber-300 font-bold flex justify-between">Defensa <strong class="text-white">49</strong></p>
+                        <p id="special-attack" class="text-cyan-400 font-bold flex justify-between">Atq. Esp <strong class="text-white">65</strong></p>
+                        <p id="special-defense" class="text-indigo-800 font-bold flex justify-between">Def. Esp <strong class="text-white">65</strong></p>
+                        <p id="speed" class="text-emerald-400 font-bold flex justify-between">Velocidad <strong class="text-white">45</strong></p>
                     </div>
                     
-                    <div class="types">
-                        <p id="type1">Tipo 1 🠚 <strong class="text-white font-bold">grass</strong></p>
-                        <p id="type2">Tipo 2 🠚 <strong class="text-white font-bold">poison</strong></p>
+                    <div class="types flex gap-4 mt-4 justify-center md:justify-center">
+                        <span id="type1" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow">Grass</span>
+                        <span id="type2" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow">Poison</span>
                     </div>
 
                 </div>
             </section>
 
-            <section class="button-container flex m-4 gap-8 pl-10">
-                <button id="change" class="bg-red-500/50 backdrop-blur-md border border-red-500/30 p-2 pl-6 pr-6 transition-all hover:bg-white/40 hover:scale-105 rounded-2xl">Cambio</button>
+            <section class="button-container flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
+                <button id="change" class="bg-red-500/80 hover:bg-red-500 text-white backdrop-blur-md border border-red-400/50 py-2 px-6 transition-all hover:scale-105 rounded-xl shadow-lg font-bold">
+                    Cambio
+                </button>
 
-                <a id="wiki" href="https://www.wikidex.net/wiki/Bulbasaur" class="text-sm hover:text-blue-700" target="_blank">
-                    <button class="text-base bg-blue-500/50 backdrop-blur-md border border-blue-500/30 p-2 pl-6 pr-6 transition-all hover:bg-white/40 hover:scale-105 rounded-2xl">WikiDex</button>
+                <a id="wiki" href="https://www.wikidex.net/wiki/Bulbasaur" target="_blank">
+                    <button class="bg-blue-500/80 hover:bg-blue-500 text-white backdrop-blur-md border border-blue-400/50 py-2 px-6 transition-all hover:scale-105 rounded-xl shadow-lg font-bold">
+                        WikiDex
+                    </button>
                 </a>
             </section>
         </section>
+
+        <section class="history-container w-full lg:w-auto flex flex-col bg-white/20 backdrop-blur-md border border-white/30 shadow-xl pt-4 pb-4 rounded-2xl order-3">
+            <div class="p-6 lg:w-60 flex flex-col items-center text-white gap-2">
+                <h1 class="font-bold text-lg">Generación</h1>
+                <div class="w-full">
+                    <select id="generaciones" class="w-full p-2 rounded-lg text-black bg-white/90 cursor-pointer outline-none focus:ring-2 focus:ring-blue-400">
+                        <option value="0">Todas</option>
+                        <option value="1">Kanto</option>
+                        <option value="2">Johto</option>
+                        <option value="3">Hoenn</option>
+                        <option value="4">Sinnoh</option>
+                        <option value="5">Teselia</option>
+                        <option value="6">Kalos</option>
+                        <option value="7">Alola</option>
+                        <option value="8">Galar</option>
+                        <option value="9">Paldea</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <script src="scripts.js"></script>
     </main>
-
-    <footer>
-        <p></p>
-    </footer>
-
-    <script src="scripts.js"></script>
-
 </body>
+
 </html>

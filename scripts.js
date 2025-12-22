@@ -15,6 +15,21 @@ const speed = document.getElementById("speed")
 const type1 = document.getElementById("type1")
 const type2 = document.getElementById("type2")
 
+// Selector de generacion
+const selector = document.getElementById("generaciones")
+const rangosPokemon = {
+  '0': { inicio: 1, fin: 1025 },
+  '1': { inicio: 1, fin: 151 },    // Kanto
+  '2': { inicio: 152, fin: 251 },  // Johto
+  '3': { inicio: 252, fin: 386 },  // Hoenn
+  '4': { inicio: 387, fin: 493 },  // Sinnoh
+  '5': { inicio: 494, fin: 649 },  // Unova
+  '6': { inicio: 650, fin: 721 },
+  '7': { inicio: 722, fin: 809 },
+  '8': { inicio: 810, fin: 905 },
+  '9': { inicio: 906, fin: 1025 },   
+};
+
 //Boton
 const cambioBtn = document.getElementById("change")
 
@@ -68,42 +83,50 @@ class PokeAPI {
     }
 }
 
+function obtenerIdGen(eleccion){
+
+    const rango = rangosPokemon[eleccion]
+
+    return Math.floor(Math.random() * (rango.fin - rango.inicio + 1)) + rango.inicio;
+}
+
+selector.addEventListener("change", () => {
+    const gen = selector.value
+    console.log(`Se ha seleccionado la generacion: ${gen}`)
+    })
+
 
 // Funcion Autoejecutable que manda los cambios, la hago 
 // asi para poder usar el async-await en espera de los datos de la API
 const MostrarPokemon = async () => {
-    // Se busca de esta manera
 
     // Eleccion random
+    const genActual = selector.value
+    const IdRandom = obtenerIdGen(genActual)
 
-    const Aleatorio = Math.floor(Math.random() * (1025 - 0 + 1)) + 0;
+    //const Aleatorio = Math.floor(Math.random() * (1025 - 0 + 1)) + 0;
 
     const Api = new PokeAPI()
 
-    const ObjetoPokemon = await Api.GetPokemonData(Aleatorio)
+    const ObjetoPokemon = await Api.GetPokemonData(IdRandom)
 
     // Nombre
-    PokeName.innerHTML = `<p class="text-yellow-200 font-bold">Nombre 🠚<strong class="text-white font-bold">
+    PokeName.innerHTML = `<p><strong class="text-yellow-200 font-bold">
                         ${ObjetoPokemon.name}</strong></p>`
 
     // Estadisticas
-    hp.innerHTML = `<p class="text-rose-500  font-bold">hp 🠚 <strong        class="text-white font-bold">
-                    ${ObjetoPokemon.stats.hp}</strong></p>`
+    hp.innerHTML = `HP <strong class="text-white font-bold">
+                    ${ObjetoPokemon.stats.hp}</strong>`
 
-    attack.innerHTML = `<p class="text-orange-400 font-bold">Ataque 🠚 <strong class="text-white font-bold">
-                        ${ObjetoPokemon.stats.attack}</strong></p>`
+    attack.innerHTML = `Ataque <strong class="text-white font-bold">${ObjetoPokemon.stats.attack}</strong>`
 
-    defense.innerHTML = `<p class="text-amber-300 font-bold">Defensa 🠚 <strong class="text-white font-bold">
-                        ${ObjetoPokemon.stats.defense}</strong></p>`
+    defense.innerHTML = `Defensa <strong class="text-white font-bold">${ObjetoPokemon.stats.defense}</strong>`
 
-    special_attack.innerHTML = `<p class="text-cyan-400 font-bold">Atq. especial 🠚 
-                                <strong class="text-white font-bold">${ObjetoPokemon.stats["special-attack"]}</strong></p> `
+    special_attack.innerHTML = `Atq. Esp <strong class="text-white font-bold">${ObjetoPokemon.stats["special-attack"]}</strong>`
 
-    special_defense.innerHTML = `<p class="text-indigo-800 font-bold">Def. especial 🠚 
-                                <strong class="text-white font-bold">${ObjetoPokemon.stats["special-defense"]}</strong></p>`
+    special_defense.innerHTML = `Def. Esp <strong class="text-white font-bold">${ObjetoPokemon.stats["special-defense"]}</strong>`
 
-    speed.innerHTML = `<p class="text-emerald-400 font-bold">Velocidad 🠚 <strong class="text-white font-bold">
-                        ${ObjetoPokemon.stats.speed}</strong>`
+    speed.innerHTML = `Velocidad <strong class="text-white font-bold">${ObjetoPokemon.stats.speed}</strong>`
 
     // Tipos
     const arrayType = await ObjetoPokemon.type
@@ -111,13 +134,13 @@ const MostrarPokemon = async () => {
     const segundoTipo = arrayType[1]
 
     if(primerTipo){
-        type1.innerHTML = `<p>Tipo 1 🠚 <strong class="text-white font-bold">${arrayType[0]}</strong></p>`
+        type1.innerHTML = `<p><strong class="text-white font-bold">${arrayType[0]}</strong></p>`
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p>Tipo 2 🠚 <strong class="text-white font-bold">${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p><strong class="text-white font-bold">${arrayType[1]}</strong></p>`
     } else{
-        type2.textContent = ""
+        type2.innerHTML = "<p></p>"
     }
 
     // Sprites
