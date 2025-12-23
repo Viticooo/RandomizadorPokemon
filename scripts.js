@@ -1,5 +1,8 @@
 // Scripts con conexion a la PokeAPI
 
+// Importaciones
+import {  getHistory ,crearRegistro, cargarHistory } from "./history.js"
+
 // Documentos
 
 //Nombre
@@ -38,6 +41,9 @@ const sprite = document.getElementById("sprite")
 
 // Wiki
 const wiki = document.getElementById("wiki")
+
+// Container history
+const container_history = document.querySelector(".sprites")
 
 
 // Funcion de buscar el pokemon en la API
@@ -148,10 +154,28 @@ const MostrarPokemon = async () => {
     sprite.setAttribute("src", stringSprite)
 
 
+    // Guardado del sprite en el Historial
+    crearRegistro(stringSprite)
+    const historial = getHistory()
+
+    container_history.innerHTML = ""
+
+    for(let i =0; i < historial.length; i++){
+        const spriteHistory = document.createElement('img')
+        // spriteHistory.setAttribute("class", "size-16")
+        spriteHistory.setAttribute("src", historial[i]) 
+        container_history.appendChild(spriteHistory)
+    }
+
+
     // info PokeWiki
     const referenciaWiki = `https://www.wikidex.net/wiki/${ObjetoPokemon.name}`
     wiki.setAttribute("href", referenciaWiki)
 }
+
+
+// Historial
+
 
 
 // Funcionamiento del boton
