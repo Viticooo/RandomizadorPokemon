@@ -32,10 +32,9 @@ https://viticooo.github.io/RandomizadorPokemon/
 ---
 
 ##  Posibles mejoras futuras
-- Historial de Pokémon generados
-- Filtro por tipo o generación
+- Filtro por tipo
 - Animaciones de carga
-- Guardar Pokémon favoritos (localStorage)
+- Guardar Pokémon favoritos
 
 ---
 
