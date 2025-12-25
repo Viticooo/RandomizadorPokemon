@@ -194,3 +194,4 @@ document.addEventListener("DOMContentLoaded", () => {
 cambioBtn.addEventListener("click", MostrarPokemon);
 
 // Texto para enviar el fix del commit anterior.
+// Otro texto que por alguna razon arregla el error del deploy xD
