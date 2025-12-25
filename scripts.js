@@ -144,9 +144,10 @@ const MostrarPokemon = async () => {
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p><strong class="text-white font-bold">${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p><strong class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow">${arrayType[1]}</strong></p>`
     } else{
-        type2.innerHTML = "<p></p>"
+        type2.innerHTML = ""
+        type2.setAttribute("class", "")
     }
 
     // Sprites
@@ -175,7 +176,18 @@ const MostrarPokemon = async () => {
 
 
 // Historial
-
+document.addEventListener("DOMContentLoaded", () => {
+    const historial = getHistory()
+    
+    container_history.innerHTML = ""
+    
+    for(let i =0; i < historial.length; i++){
+        const spriteHistory = document.createElement('img')
+        spriteHistory.setAttribute("class", "")
+        spriteHistory.setAttribute("src", historial[i]) 
+        container_history.appendChild(spriteHistory)
+    }
+})
 
 
 // Funcionamiento del boton
