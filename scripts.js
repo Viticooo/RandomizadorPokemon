@@ -18,6 +18,28 @@ const speed = document.getElementById("speed")
 const type1 = document.getElementById("type1")
 const type2 = document.getElementById("type2")
 
+// Colores tipo
+const tipos = {
+    "normal": "bg-[#9fa19f]",
+    "fire": "bg-[#e62829]",
+    "water": "bg-[#2980ef]",
+    "grass": "bg-[#3fa129]",
+    "electric": "bg-[#fac000]",
+    "ice": "bg-[#3fd8ff]",
+    "fighting": "bg-[#ff8000]",
+    "poison": "bg-[#482065]",
+    "ground": "bg-[#482810]",
+    "flying": "bg-[#405c77]",
+    "psychic": "bg-[#ef4179]",
+    "bug": "bg-[#91a119]",
+    "rock": "bg-[#afa981]",
+    "ghost": "bg-[#704170]",
+    "dragon": "bg-[#5060e1]",
+    "dark": "bg-[#28201f]",
+    "steel": "bg-[#30505c]",
+    "fairy": "bg-[#ef70ef]",
+}
+
 // Selector de generacion
 const selector = document.getElementById("generaciones")
 const rangosPokemon = {
@@ -141,10 +163,12 @@ const MostrarPokemon = async () => {
 
     if(primerTipo){
         type1.innerHTML = `<p><strong class="text-white font-bold">${arrayType[0]}</strong></p>`
+        type1.setAttribute("class", `${tipos[primerTipo]} text-white px-3 py-1 rounded-full text-sm font-bold shadow`)
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p><strong class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow">${arrayType[1]}</strong></p>`
+        type2.innerHTML = `<p><strong class=" text-white px-3 py-1 rounded-full text-sm font-bold shadow">${arrayType[1]}</strong></p>`
+        type2.setAttribute("class", `${tipos[segundoTipo]} text-white px-3 py-1 rounded-full text-sm font-bold shadow`)
     } else{
         type2.innerHTML = ""
         type2.setAttribute("class", "")
@@ -175,6 +199,7 @@ const MostrarPokemon = async () => {
 }
 
 
+
 // Historial
 document.addEventListener("DOMContentLoaded", () => {
     const historial = getHistory()
@@ -188,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container_history.appendChild(spriteHistory)
     }
 })
+
 
 
 // Funcionamiento del boton
