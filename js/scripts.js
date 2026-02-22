@@ -167,7 +167,7 @@ const MostrarPokemon = async () => {
     }
     
     if(segundoTipo){
-        type2.innerHTML = `<p><strong class=" text-white px-3 py-1 rounded-full text-sm font-bold shadow">${arrayType[1]}</strong></p>`
+        type2.innerHTML = `${arrayType[1]}`
         type2.setAttribute("class", `${tipos[segundoTipo]} text-white px-3 py-1 rounded-full text-sm font-bold shadow`)
     } else{
         type2.innerHTML = ""
