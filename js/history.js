@@ -13,23 +13,25 @@ export function getHistory(){
 
 export function saveHistory(data){
 
-
     const dataString = JSON.stringify(data)
     localStorage.setItem(DB_KEY, dataString)
 }
 
 
-export async function crearRegistro(nuevoSprite){
+export async function crearRegistro(nuevoSprite, enlaceWiki){
 
     const history = getHistory()
 
-    if(history.length < 6){
+    if(history.length < 11){
+        history.push(enlaceWiki)
         history.push(nuevoSprite)
     }
 
-    if (history.length === 6){
+    if (history.length === 12){
         history.unshift(nuevoSprite)
-        history.pop(5)
+        history.unshift(enlaceWiki)
+        history.pop(10)
+        history.pop(11)
     }
 
     saveHistory(history)

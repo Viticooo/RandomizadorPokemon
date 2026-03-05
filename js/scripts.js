@@ -15,6 +15,7 @@ const defensa = document.getElementById("defense")
 const special_attack = document.getElementById("special-attack")
 const special_defense = document.getElementById("special-defense")
 const speed = document.getElementById("speed")
+const total = document.getElementById("total")
 const type1 = document.getElementById("type1")
 const type2 = document.getElementById("type2")
 
@@ -86,8 +87,8 @@ class PokeAPI {
                 const nombre = await data.species.name
 
                 // Sprite del pokemon
-                const sprite = await data.sprites.front_default
-
+                const sprite = await data.sprites.other['official-artwork'].front_default
+                const Pixelsprite = await data.sprites.front_default
 
                 // Objeto/map con la estadisticas en orden del Json
                 const mapEstadisticas = {}
@@ -139,22 +140,32 @@ const MostrarPokemon = async () => {
     const ObjetoPokemon = await Api.GetPokemonData(IdRandom)
 
     // Nombre
-    PokeName.innerHTML = `<p><strong class="text-yellow-200 font-bold">
-                        ${ObjetoPokemon.name}</strong></p>`
+    PokeName.innerHTML = `<p><strong class="text-yellow-200 font-bold">${ObjetoPokemon.name}</strong></p>`
 
     // Estadisticas
-    hp.innerHTML = `HP <strong class="text-white font-bold">
-                    ${ObjetoPokemon.stats.hp}</strong>`
 
-    attack.innerHTML = `Ataque <strong class="text-white font-bold">${ObjetoPokemon.stats.attack}</strong>`
+    const salud_stat = ObjetoPokemon.stats.hp
+    const ataque_stat = ObjetoPokemon.stats.attack
+    const defensa_stat = ObjetoPokemon.stats.defense
+    const ataque_especial_stat = ObjetoPokemon.stats["special-attack"]
+    const defensa_especial_stat = ObjetoPokemon.stats["special-defense"]
+    const velocidad_stat = ObjetoPokemon.stats.speed
 
-    defense.innerHTML = `Defensa <strong class="text-white font-bold">${ObjetoPokemon.stats.defense}</strong>`
+    const total_stats = salud_stat + ataque_stat + defensa_stat + ataque_especial_stat + defensa_especial_stat + velocidad_stat
 
-    special_attack.innerHTML = `Atq. Esp <strong class="text-white font-bold">${ObjetoPokemon.stats["special-attack"]}</strong>`
+    hp.innerHTML = `HP <strong class="text-white font-bold">${salud_stat}</strong>`
 
-    special_defense.innerHTML = `Def. Esp <strong class="text-white font-bold">${ObjetoPokemon.stats["special-defense"]}</strong>`
+    ataque.innerHTML = `Ataque <strong class="text-white font-bold">${ataque_stat}</strong>`
 
-    speed.innerHTML = `Velocidad <strong class="text-white font-bold">${ObjetoPokemon.stats.speed}</strong>`
+    defensa.innerHTML = `Defensa <strong class="text-white font-bold">${defensa_stat}</strong>`
+
+    special_attack.innerHTML = `Atq. Esp <strong class="text-white font-bold">${ataque_especial_stat}</strong>`
+
+    special_defense.innerHTML = `Def. Esp <strong class="text-white font-bold">${defensa_especial_stat}</strong>`
+
+    speed.innerHTML = `Velocidad <strong class="text-white font-bold">${velocidad_stat}</strong>`
+
+    total.innerHTML = `Total <strong class="text-white font-bold">${total_stats}</strong>`
 
     // Tipos
     const arrayType = await ObjetoPokemon.type
@@ -178,24 +189,35 @@ const MostrarPokemon = async () => {
     const stringSprite = await ObjetoPokemon.sprite
     sprite.setAttribute("src", stringSprite)
 
+    // info PokeWiki
+    const referenciaWiki = `https://www.wikidex.net/wiki/${ObjetoPokemon.name}`
+    wiki.setAttribute("href", referenciaWiki)
+
 
     // Guardado del sprite en el Historial
-    crearRegistro(stringSprite)
+    crearRegistro(stringSprite, referenciaWiki)
     const historial = getHistory()
 
     container_history.innerHTML = ""
 
     for(let i =0; i < historial.length; i++){
         const spriteHistory = document.createElement('img')
-        // spriteHistory.setAttribute("class", "size-16")
+        const enlaceWiki = document.createElement('a')
+
+        enlaceWiki.setAttribute("class", "w-24 h-24 flex-shrink-0")
+        enlaceWiki.setAttribute("href", historial[i])
+        enlaceWiki.setAttribute("target", "_blank")
+
+        i += 1
+
+        spriteHistory.setAttribute("class", "w-24 h-24")
         spriteHistory.setAttribute("src", historial[i]) 
-        container_history.appendChild(spriteHistory)
+        
+        enlaceWiki.appendChild(spriteHistory)
+        container_history.appendChild(enlaceWiki)
     }
 
 
-    // info PokeWiki
-    const referenciaWiki = `https://www.wikidex.net/wiki/${ObjetoPokemon.name}`
-    wiki.setAttribute("href", referenciaWiki)
 }
 
 
@@ -208,9 +230,19 @@ document.addEventListener("DOMContentLoaded", () => {
     
     for(let i =0; i < historial.length; i++){
         const spriteHistory = document.createElement('img')
-        spriteHistory.setAttribute("class", "")
+        const enlaceWiki = document.createElement('a')
+
+        enlaceWiki.setAttribute("class", "w-24 h-24 flex-shrink-0")
+        enlaceWiki.setAttribute("href", historial[i])
+        enlaceWiki.setAttribute("target", "_blank")
+
+        i += 1
+
+        spriteHistory.setAttribute("class", "w-24 h-24")
         spriteHistory.setAttribute("src", historial[i]) 
-        container_history.appendChild(spriteHistory)
+        
+        enlaceWiki.appendChild(spriteHistory)
+        container_history.appendChild(enlaceWiki)
     }
 })
 
